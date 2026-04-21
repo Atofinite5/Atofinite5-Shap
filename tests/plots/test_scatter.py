@@ -115,9 +115,7 @@ def test_scatter_categorical_with_missing_values():
     """Regression for GH #4584: scatter on a categorical feature with NaN entries
     used to fail with `TypeError: '<' not supported between instances of 'str'
     and 'float'`. The call must now complete without error."""
-    data = np.asarray(
-        pd.Series(["a", "b", None, "a", "c", None, "b", "c"], dtype="category")
-    ).astype(object)
+    data = np.asarray(pd.Series(["a", "b", None, "a", "c", None, "b", "c"], dtype="category")).astype(object)
     n = len(data)
     explanation = shap.Explanation(
         values=np.linspace(-0.5, 0.5, n).reshape(n, 1),
